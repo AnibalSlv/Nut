@@ -2,8 +2,15 @@ package navbar
 
 import "charm.land/lipgloss/v2"
 
-// Contiene toda la logica de visualizacion del navbar
-// Tiene como altura: 5
+/*
+Contiene toda la logica de visualizacion del navbar
+  - Tiene como altura: 5
+  - Numero en las vistas:
+  - 0 = Principal
+  - 1 = Energy
+  - 2 = Healt
+  - 3 = Map
+*/
 func TabView(activeTab Tab, maxWidth int) string {
 	var tabs []string
 

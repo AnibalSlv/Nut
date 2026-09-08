@@ -1,5 +1,6 @@
 package navbar
 
+// XXX Pensando en borrar
 func TabUpdate(key string) Tab {
 	switch key {
 	case "1":

@@ -16,6 +16,8 @@ func panelTemplate(maxHeight int) lipgloss.Style {
 func sPanelEvents(maxHeight int, maxWidth int) lipgloss.Style {
 	p := lipgloss.NewStyle().
 		Border(lipgloss.RoundedBorder()).
+		BorderForeground(lipgloss.Color("#4AC109")).
+		Foreground(lipgloss.Color("#4AC109")).
 		Padding(1).
 		Height(maxHeight - navbarHeight).
 		Width(maxWidth - 30)

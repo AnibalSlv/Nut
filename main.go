@@ -2,17 +2,16 @@ package main
 
 import (
 	"fmt"
-	"nut/src/terminal/principal"
+	"nut/src/terminal/manager"
 	"os"
 
 	tea "charm.land/bubbletea/v2"
 )
 
 func main() {
-	p := tea.NewProgram(principal.InitialModelTerminal())
+	p := tea.NewProgram(manager.InitialModelManager())
 	if _, err := p.Run(); err != nil {
 		fmt.Printf("Alas, there's been an error: %v", err)
 		os.Exit(1)
 	}
-
 }

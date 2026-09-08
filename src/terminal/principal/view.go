@@ -10,7 +10,7 @@ import (
 
 func (m Model) View() tea.View {
 
-	navbar := navbar.TabView(m.ActiveTab, m.maxWidth)
+	navbar := navbar.TabView(0, m.maxWidth)
 
 	pEvents := sPanelEvents(m.maxHeight, m.maxWidth).Render(m.EventTerminal)
 
