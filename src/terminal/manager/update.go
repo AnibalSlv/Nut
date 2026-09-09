@@ -23,11 +23,14 @@ func (m managerModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			// Logica de la barra de navegacion
 		case "1":
 			m.currentView = viewPrincipal
+
+			// Pasa el tamano de la pantalla al modelo
+			m.principalModel.MaxWidth = m.maxWidth
+			m.principalModel.MaxHeight = m.maxHeight
 			return m, nil
 		case "2":
 			m.currentView = viewEnergy
 
-			// Pasa el tamano de la pantalla al modelo
 			m.energyModel.MaxWidth = m.maxWidth
 			m.energyModel.MaxHeight = m.maxHeight
 			return m, nil
@@ -36,7 +39,9 @@ func (m managerModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	switch m.currentView {
 	case viewPrincipal:
-		var cmd tea.Cmd
+		m.principalModel.MaxWidth = m.maxWidth
+		m.principalModel.MaxHeight = m.maxHeight
+
 		updated, cmd := m.principalModel.Update(msg)
 		m.principalModel = updated.(principal.Model)
 		return m, cmd
