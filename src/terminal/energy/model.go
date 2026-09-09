@@ -6,9 +6,9 @@ type ModelEnergy struct {
 	MaxHeight int
 
 	// Atributos de la ventana
-	energyTotal   int
-	energyHealt   int
-	energyEngine  int
-	energyShield  int
-	energyWeapons int
+	energyTotal       int
+	energyLifeSupport int
+	energyEngine      int
+	energyShield      int
+	energyWeapons     int
 }

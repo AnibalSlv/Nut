@@ -8,11 +8,11 @@ import (
 func InitialModelEnergy() ModelEnergy {
 	return ModelEnergy{
 
-		energyTotal:   0,
-		energyHealt:   0,
-		energyEngine:  0,
-		energyShield:  0,
-		energyWeapons: 0,
+		energyTotal:       0,
+		energyLifeSupport: 0,
+		energyEngine:      0,
+		energyShield:      0,
+		energyWeapons:     0,
 	}
 }
 

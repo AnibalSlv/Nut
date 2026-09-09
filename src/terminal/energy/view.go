@@ -12,14 +12,28 @@ func (m ModelEnergy) View() tea.View {
 
 	navbar := navbar.TabView(1, m.MaxWidth)
 
-	pEngine := sPanelEngine().Render(strconv.Itoa(m.MaxWidth))
-	pWeapon := sPanelEngine().Render(strconv.Itoa(m.MaxHeight))
-	pShield := sPanelEngine().Render("0%")
-	pLifeSupport := sPanelEngine().Render("0%")
+	pShield := sPanelEngine().Render(strconv.Itoa(m.energyShield) + "%")
+	panelUp := lipgloss.Place(m.MaxWidth, 3, lipgloss.Center, lipgloss.Center,
+		lipgloss.JoinVertical(lipgloss.Top, "Escudos", pShield))
 
-	panels := lipgloss.JoinHorizontal(lipgloss.Top, pEngine, "", pLifeSupport)
+	pEngine := sPanelEngine().Render(strconv.Itoa(m.energyEngine) + "%")
+	pLifeSupport := sPanelEngine().Render(strconv.Itoa(m.energyLifeSupport) + "%")
 
-	content := lipgloss.JoinVertical(lipgloss.Top, navbar, " ", pShield, " ", panels, " ", pWeapon)
+	// Para poder separar los dos paneles es: el tamano maximo - (el tamano del cuadro * 2)
+	separatorWidht := lipgloss.NewStyle().Width(m.MaxWidth - (50 * 2)).Render("")
+	panelMid := lipgloss.JoinHorizontal(lipgloss.Top,
+		lipgloss.JoinVertical(
+			lipgloss.Top, "Motores", pEngine),
+		separatorWidht,
+		lipgloss.JoinVertical(
+			lipgloss.Top, "Soporte Vital", pLifeSupport))
+
+	pWeapon := sPanelEngine().Render(strconv.Itoa(m.energyWeapons) + "%")
+	panelDown := lipgloss.Place(m.MaxWidth, 3, lipgloss.Center, lipgloss.Center,
+		lipgloss.JoinVertical(lipgloss.Top, "Armas", pWeapon))
+
+	separatorHeight := lipgloss.NewStyle().Height(2).Render("")
+	content := lipgloss.JoinVertical(lipgloss.Top, navbar, separatorHeight, panelUp, separatorHeight, panelMid, separatorHeight, panelDown)
 
 	var v tea.View
 	v.SetContent(content)
