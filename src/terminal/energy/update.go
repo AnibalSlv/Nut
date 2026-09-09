@@ -7,10 +7,6 @@ import (
 func (m ModelEnergy) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 
-	case tea.WindowSizeMsg:
-		m.MaxWidth = msg.Width
-		m.maxHeight = msg.Height
-
 	case tea.KeyPressMsg:
 
 		switch msg.String() {

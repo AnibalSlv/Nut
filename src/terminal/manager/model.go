@@ -15,6 +15,10 @@ const (
 )
 
 type managerModel struct {
+	// Dimensiones de la pantalla
+	maxWidth  int
+	maxHeight int
+
 	currentView    view
 	principalModel principal.Model
 	energyModel    energy.ModelEnergy

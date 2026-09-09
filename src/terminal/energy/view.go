@@ -10,10 +10,10 @@ import (
 
 func (m ModelEnergy) View() tea.View {
 
-	navbar := navbar.TabView(1, 132)
+	navbar := navbar.TabView(1, m.MaxWidth)
 
 	pEngine := sPanelEngine().Render(strconv.Itoa(m.MaxWidth))
-	pWeapon := sPanelEngine().Render("0%")
+	pWeapon := sPanelEngine().Render(strconv.Itoa(m.MaxHeight))
 	pShield := sPanelEngine().Render("0%")
 	pLifeSupport := sPanelEngine().Render("0%")
 

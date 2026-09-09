@@ -2,8 +2,8 @@ package principal
 
 type Model struct {
 	// Dimensiones de la ventana
-	maxWidth  int
-	maxHeight int
+	MaxWidth  int
+	MaxHeight int
 
 	// Terminal
 	EventTerminal string

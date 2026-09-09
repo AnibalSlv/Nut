@@ -10,13 +10,13 @@ import (
 
 func (m Model) View() tea.View {
 
-	navbar := navbar.TabView(0, m.maxWidth)
+	navbar := navbar.TabView(0, m.MaxWidth)
 
-	pEvents := sPanelEvents(m.maxHeight, m.maxWidth).Render(m.EventTerminal)
+	pEvents := sPanelEvents(m.MaxHeight, m.MaxWidth).Render(m.EventTerminal)
 
-	pEnergy := sPanelEnergy(m.maxHeight).Render(strconv.Itoa(m.Energy) + "%")
-	pTemperature := sPanelTemperature(m.maxHeight).Render(strconv.Itoa(m.Temperature) + "C")
-	pOxygen := sPanelOxygen(m.maxHeight).Render(strconv.Itoa(m.Oxygen) + "%")
+	pEnergy := sPanelEnergy(m.MaxHeight).Render(strconv.Itoa(m.Energy) + "%")
+	pTemperature := sPanelTemperature(m.MaxHeight).Render(strconv.Itoa(m.Temperature) + "C")
+	pOxygen := sPanelOxygen(m.MaxHeight).Render(strconv.Itoa(m.Oxygen) + "%")
 
 	panels := lipgloss.JoinHorizontal(lipgloss.Top, pEvents, pOxygen, pTemperature, pEnergy)
 

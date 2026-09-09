@@ -9,6 +9,10 @@ import (
 
 func (m managerModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
+	case tea.WindowSizeMsg:
+		m.maxWidth = msg.Width
+		m.maxHeight = msg.Height
+
 	case tea.KeyPressMsg:
 
 		switch msg.String() {
@@ -22,6 +26,10 @@ func (m managerModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return m, nil
 		case "2":
 			m.currentView = viewEnergy
+
+			// Pasa el tamano de la pantalla al modelo
+			m.energyModel.MaxWidth = m.maxWidth
+			m.energyModel.MaxHeight = m.maxHeight
 			return m, nil
 		}
 	}
@@ -34,7 +42,9 @@ func (m managerModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, cmd
 
 	case viewEnergy:
-		var cmd tea.Cmd
+		m.energyModel.MaxWidth = m.maxWidth
+		m.energyModel.MaxHeight = m.maxHeight
+
 		updated, cmd := m.energyModel.Update(msg)
 		m.energyModel = updated.(energy.ModelEnergy)
 		return m, cmd
